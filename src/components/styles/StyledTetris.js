@@ -24,4 +24,3 @@ export const StyledTetris = styled.div`
     padding: 0 20px;
   }
 `;
-
