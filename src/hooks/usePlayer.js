@@ -4,9 +4,9 @@ import { randomTetromino } from "../tetrominos";
 
 export const usePlayer = () => {
   const [player, setPlayer] = useState({
-    pos: {x: 0, y: 0},
+    pos: { x: 0, y: 0 },
     tetromino: randomTetromino().shape,
-    collided: false,
+    collided: false
   });
-  return [player]
-}
+  return [player];
+};
