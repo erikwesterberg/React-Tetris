@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { createStage } from "../gameHelpers";
+
 // styled components
 import { StyledTetrisWrapper, StyledTetris } from "./styles/StyledTetris"; 
 //Components
@@ -20,8 +22,39 @@ const Tetris = () => {
   const [stage, setStage] = useStage(player)
 
   console.log("re-render")
+
+  const movePlayer = dir => {
+
+  }
+
+  const startGame = () => {
+
+  }
+
+  const drop = () => {
+
+  }
+
+  const dropPlayer = () => {
+
+  }
+
+  const move = ({ keyCode }) => {
+    if (!gameOver) {
+      // 37 = leftarrow keyboard, moving to the left
+      if(keyCode === 37) {
+        movePlayer(-1)
+        // right arrow keybord, moving to right
+      } else if (keyCode === 39) {
+        movePlayer(1);
+        // 40 down arrow, moves down
+      } else if (keyCode === 40) {
+        dropPlayer()
+      }
+    }
+  }
   return (
-    <StyledTetrisWrapper>
+    <StyledTetrisWrapper role="button" tabIndex="0" onKeyDown={e => move(e)}>
       <StyledTetris>
       <Stage stage={stage}/>
       <aside>
