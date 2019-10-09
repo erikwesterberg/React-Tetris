@@ -18,25 +18,29 @@ const Tetris = () => {
   const [dropTime, setDropTime] = useState(null)
   const [gameOver, setGameOver] = useState(false)
 
-  const [player] = useStage()
-  const [stage, setStage] = useStage(player)
+  const [player, updatePlayerPos, resetPlayer] = useStage()
+  const [stage, setStage] = useStage(player, resetPlayer)
 
   console.log("re-render")
 
   const movePlayer = dir => {
-
+    // setting left and right directions
+    updatePlayerPos({ x: dir, y: 0})
   }
 
   const startGame = () => {
-
+    //reset everything
+    setStage(createStage());
+    resetPlayer()
   }
 
   const drop = () => {
-
+    // Dropping tetris, 
+    updatePlayerPos({ x: 0, y: 1, collided: false})
   }
 
   const dropPlayer = () => {
-
+    drop()
   }
 
   const move = ({ keyCode }) => {
@@ -67,7 +71,7 @@ const Tetris = () => {
           <Display text="Level" />
         </div>
         )}
-        <StartButton />
+        <StartButton onClick={startGame} />
       </aside>
       </StyledTetris>
     </StyledTetrisWrapper>
